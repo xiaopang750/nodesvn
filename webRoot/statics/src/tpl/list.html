@@ -1,0 +1,57 @@
+<li sub-list>
+	<div class="ba-font-14 ba-mb-10" file="{{data.file}}">
+		<span>{{data.shortFile}}</span>
+		<span class="fa fa-close" list-remove></span>
+	</div>
+	<div class="ba-mb-10">
+		<span>
+			请选择历史修改版本:
+			<span class="ba-gray">(最上面的为最新版)</span>
+		</span>
+		<select class="form-control" version>
+			{{each data.data}}
+			<option value="{{$value.version}}">
+				{{$value.version}}  修改日期:{{$value.date}}
+			</option>
+			{{/each}}
+		</select>
+	</div>
+	<div class="ba-mb-10">
+		<span>
+			请选择历史修改人员名称:
+			<span class="ba-gray">(最上面的为最新版)</span>
+		</span>
+		<select class="form-control" name>
+			{{each data.data}}
+			<option value="{{changeName $value.author}}">{{changeName $value.author}}</option>
+			{{/each}}
+		</select>
+	</div>
+	<div class="ba-mb-10">
+		<span>
+			bug号:
+			<span class="ba-gray">(可以不填)</span>
+		</span>
+		<input type="text" class="form-control" bug>
+	</div>
+	<div class="ba-mb-10">
+		<span>
+			描述:
+			<span class="ba-gray">(可以不填)</span>
+		</span>
+		<input type="text" class="form-control" describe>
+	</div>
+	<div class="ba-mb-10">
+		<span>
+			状态:
+			<span class="ba-gray">(可以不填)</span>
+		</span>
+		<input type="text" class="form-control" status>
+	</div>
+	<div class="ba-mb-10">
+		<span>
+			日期:
+		</span>
+		<input type="text" class="form-control" time value="{{nowTime ''}}" readonly="readonly">
+	</div>
+</li>

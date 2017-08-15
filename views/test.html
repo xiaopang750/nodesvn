@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<title>test</title>
+</head>
+
+<body>
+<div id="fanwei">
+	
+</div>
+
+<button id="deji">dialog</button>
+
+<script>
+	window.onload = function() {
+
+		var oDeji = document.getElementById('deji');
+
+		oDeji.onclick = function() {
+
+			contact.showcontacts();
+
+		};
+
+	}
+
+	function show() {
+		var oDiv = document.getElementById('fanwei');
+		oDiv.innerHTML = 2;
+	}
+</script>
+</body>
+</html>

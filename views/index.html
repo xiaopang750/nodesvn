@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="statics/src/css/core/rockstar.css">
+<link rel="stylesheet" href="statics/src/css/main/index.css">
+<title>svn工作日志生成器</title>
+</head>
+
+<body>
+<div class="wrap ba-clearfix">
+	<div class="area ba-fl">
+
+		<!-- 搜索区域 -->
+		<div class="ba-mb-10 ba-font-16">
+			<span class="fa fa-file"></span>
+			<span>请填写svn工作目录:</span>
+			<span class="ba-gray">(如:F:\work\dep\code_list)</span>
+		</div>
+
+		<!-- hisotry -->
+		{{if data.length}}
+		<div history-wrap>
+			<div class="ba-mb-10 ba-gray">
+				<span class="fa fa-history"></span>
+				从历史记录选择:
+			</div>
+			<select class="form-control ba-mb-15" history>
+				<option value="">请选择</option>
+				{{each data}}
+					{{if $index == 0}}
+						<option value="{{$value.files}}" selected="selected">{{$value.files}}</option>
+					{{else}}
+						<option value="{{$value.files}}">{{$value.files}}</option>
+					{{/if}}
+				{{/each}}
+			</select>			
+		</div>
+		{{/if}}
+
+		<!-- root -->
+		<div class="ba-mb-50">
+			<div class="ba-clearfix ba-mb-3">
+				{{if data.length}}
+				<span class="ba-gray" input-tip>输入:</span>
+				{{/if}}
+				<input type="text" value="" class="form-control" root>
+			</div>
+			<div class="ba-clearfix ba-mb-3">
+				<button class="btn btn-primary ba-fl ba-mr-5" dir-btn>查询子目录</button>
+				<button class="btn btn-danger ba-fl" clear-cache>清除缓存</button>
+			</div>
+			<div class="ba-red ba-gray">
+				(
+				<span class="ba-red ba-bold">第一次</span>
+				查询svn目录数据时间
+				<span class="ba-red ba-bold">较长</span>
+				,请耐心等待...如目录有
+				<span class="ba-red ba-bold">新增文件</span>
+				请点击
+				<span class="ba-red ba-bold">清除缓存按钮</span>)
+			</div>
+		</div>
+		
+		<!-- root-dir -->
+		<div tree>
+			
+		</div>
+
+		<!-- search -->
+		<!-- <div class="search">
+			<div class="ba-font-16 ba-mb-15">
+				<span class="fa fa-filter"></span>
+				<span>根据条件筛选</span>
+				<span class="ba-gray">(不选代表所有)</span>
+			</div>
+
+			<table class="table" width="100%">
+				<tbody>
+					<tr>
+						<td width="20%">日期：</td>
+						<td>
+							<input type="text" class="form-control col-7" time readonly="readonly">
+							<a href="javascript:;" class="ba-fl ba-mt-5 ba-ml-5" clear-time>清空</a>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							开发人员名称：
+						</td>
+						<td>
+							<select person class="form-control col-8" person>
+								<option value="">请选择</option>
+								{{each persons}}
+									<option value="{{$value.id}}">{{$value.name}}</option>
+								{{/each}}
+							</select>
+							<a href="javascript:;" class="ba-fl ba-mt-5 ba-ml-5" clear-person>清空</a>
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td class="ba-tl">
+							<a href="javascript:;" root-btn class="btn btn-primary">
+								<span class="fa fa-search"></span>
+								<span>查询</span>
+							</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div> -->
+	</div>
+	<div class="area ba-fl list">
+		<!-- 选择区域 -->
+		<div class="ba-font-14 ba-mb-10">
+			<span class="fa fa-list"></span>
+			<span>提交文件列表</span>
+		</div>
+		<ul list-wrap>
+			
+		</ul>
+	</div>
+	<div class="area ba-fl">
+		<!-- 生成区域 -->
+		<div class="ba-tc">
+			<button class="btn btn-primary" build>生成</button>
+		</div>
+	</div>
+</div>
+
+
+<!-- loading -->
+<div class="shadow" shadow>
+	<div id="contain">
+	  <div class="load-wrap" id="wrap1">
+	    <div class="part" id="part1"></div>
+	  </div>
+
+	  <div class="load-wrap" id="wrap2">
+	    <div class="part" id="part2"></div>
+	  </div>
+
+	  <div class="load-wrap" id="wrap3">
+	    <div class="part" id="part3"></div>
+	  </div>
+
+	  <div class="load-wrap" id="wrap4">
+	    <div class="part" id="part4"></div>
+	  </div>
+	  <div class="ba-tc loading-text" loading-text
+	  >
+	  		
+	  </div>
+	</div>
+</div>
+
+<script src="statics/seajs/sea.js"></script>
+<script src="statics/seajs/config.js"></script>
+<script>
+	seajs.use('main/index/index');
+</script>
+</body>
+</html>
